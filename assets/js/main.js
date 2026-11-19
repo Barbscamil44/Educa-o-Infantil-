@@ -14,3 +14,10 @@ function toggleSticky() {
 }
 window.addEventListener('scroll', toggleSticky, { passive: true });
 toggleSticky();
+
+// Meta Pixel: registra clique no botão de compra como "Iniciar finalização de compra"
+document.querySelectorAll('[data-cta]').forEach(function (a) {
+  a.addEventListener('click', function () {
+    if (window.fbq) { fbq('track', 'InitiateCheckout'); }
+  });
+});
